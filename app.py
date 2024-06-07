@@ -69,5 +69,5 @@ def predict():
 
     return jsonify({'is_genuine': is_genuine})
 
-if __name__ == '__main__':
-    app.run(debug=True)
+'''if __name__ == '__main__':
+    app.run(debug=True)'''
