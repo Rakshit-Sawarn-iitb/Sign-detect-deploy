@@ -15,6 +15,11 @@
         .form-wrapper{
             height: 50vh;
         }
+        .image-preview {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
@@ -23,14 +28,16 @@
             <h1>Signature Verification</h1>
             <form id="signatureForm" enctype="multipart/form-data" class="d-flex flex-column align-items-center justify-content-center">
                 <div class="d-flex justify-content-center m-3">
-                    <label for="file1">Original Image:</label>
-                    <input type="file" id="file1" name="file1" required>
+                    <label for="file1">Original Signature:</label>
+                    <input type="file" id="file1" name="file1" required onchange="previewImage(event, 'preview1')">
                 </div>
+                <img id="preview1" class="image-preview" src="#" alt="Original Image Preview">
                 <br>
                 <div class="d-flex justify-content-center m-3">
-                    <label for="file2">Test Image:</label>
-                    <input type="file" id="file2" name="file2" required>
+                    <label for="file2">Test Signature:</label>
+                    <input type="file" id="file2" name="file2" required onchange="previewImage(event, 'preview2')">
                 </div>
+                <img id="preview2" class="image-preview" src="#" alt="Test Image Preview">
                 <br>
                 <button type="submit" class="btn btn-primary">Verify Signature</button>
             </form>
@@ -38,6 +45,18 @@
         </div>
     </div>
     <script>
+        function previewImage(event, previewId) {
+            const file = event.target.files[0];
+            const preview = document.getElementById(previewId);
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                preview.src = event.target.result;
+            }
+            
+            reader.readAsDataURL(file);
+        }
+
         document.getElementById('signatureForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
