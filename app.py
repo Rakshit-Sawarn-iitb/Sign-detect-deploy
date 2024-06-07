@@ -68,6 +68,3 @@ def predict():
     os.remove('temp2.png')
 
     return jsonify({'is_genuine': is_genuine})
-
-if __name__ == "main":
-    app.run(debug=False,host='0.0.0.0')
