@@ -6,43 +6,89 @@
     <title>Signature Verification</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-        .centered-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .form-wrapper{
-            min-height: 50vh;
-            margin-top: 1rem;
+        .dark-mode {
+            background-color: #000000;
+            color: #f8f9fa;
+        }
+        .dark-mode .form-wrapper {
+            background-color: #000000a2;
+            color: #f8f9fa;
+            box-shadow: 0 0px 20px 11px rgba(164, 11, 11, 0.3);
+        }
+        .dark-mode .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .dark-mode .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .dark-mode .image-preview {
+            border: 1px solid #6c757d;
+        }
+        .form-wrapper {
+            width: 100%;
+            max-width: 600px;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0px 0px 20px 11px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
         }
         .image-preview {
             width: 100%;
             max-width: 300px;
-            margin: 10px;
+            margin-top: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            object-fit: cover;
+            display: none;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            margin: 1rem;
         }
     </style>
 </head>
 <body>
+    <div class="toggle-container">
+        <button id="toggleDarkMode" class="btn btn-secondary">Toggle Dark Mode</button>
+    </div>
     <div class="d-flex align-items-center justify-content-center centered-container">
-        <div class="d-flex col-sm-5 align-items-center flex-column border rounded border-light shadow-lg p-3 mb-5 bg-body rounded form-wrapper">
-            <h1>Signature Verification</h1>
-            <form id="signatureForm" enctype="multipart/form-data" class="d-flex flex-column align-items-center justify-content-center">
-                <div class="d-flex justify-content-center m-3">
-                    <label for="file1">Original Signature:</label>
-                    <input type="file" id="file1" name="file1" required onchange="previewImage(event, 'preview1')">
+        <div class="form-wrapper">
+            <h1 class="text-center fw-bolder mb-4">Signature Verification</h1>
+            <form id="signatureForm" enctype="multipart/form-data" class="d-flex flex-column align-items-center">
+                <div class="mb-3 text-center">
+                    <label for="file1" class="form-label">Original Signature:</label>
+                    <input type="file" id="file1" name="file1" class="form-control" required onchange="previewImage(event, 'preview1')">
                 </div>
                 <img id="preview1" class="image-preview" src="#" alt="Original Image Preview">
-                <br>
-                <div class="d-flex justify-content-center m-3">
-                    <label for="file2">Test Signature:</label>
-                    <input type="file" id="file2" name="file2" required onchange="previewImage(event, 'preview2')">
+                <div class="mb-3 text-center">
+                    <label for="file2" class="form-label">Test Signature:</label>
+                    <input type="file" id="file2" name="file2" class="form-control" required onchange="previewImage(event, 'preview2')">
                 </div>
                 <img id="preview2" class="image-preview" src="#" alt="Test Image Preview">
-                <br>
-                <button type="submit" class="btn btn-primary">Verify Signature</button>
+                <div class="mt-4 text-center">
+                    <button type="submit" class="btn btn-primary">Verify Signature</button>
+                </div>
             </form>
-            <p id="result"></p>
+            <h4 id="result" class="mt-3 text-center"></h4>
         </div>
     </div>
     <script>
@@ -53,6 +99,7 @@
             
             reader.onload = function(event) {
                 preview.src = event.target.result;
+                preview.style.display = 'block';
             }
             
             reader.readAsDataURL(file);
@@ -81,6 +128,19 @@
                 console.error('Error:', error);
                 document.getElementById('result').textContent = `Error: ${error}`;
             });
+        });
+
+        const toggleButton = document.getElementById('toggleDarkMode');
+        toggleButton.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const verifyButton = document.querySelector('button[type="submit"]');
+            if (document.body.classList.contains('dark-mode')) {
+                verifyButton.classList.remove('btn-primary');
+                verifyButton.classList.add('btn-warning');
+            } else {
+                verifyButton.classList.remove('btn-warning');
+                verifyButton.classList.add('btn-primary');
+            }
         });
     </script>
 </body>
