@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lavishly+Yours&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jura:wght@300..700&family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jura:wght@300..700&family=Lexend:wght@100..900&family=M+PLUS+1:wght@100..900&display=swap');
+
+body {
+    background: linear-gradient(to bottom, #ffeeee, #FFFFFF);
+    height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.custom-navbar{
+    height: 7.25rem;
+    background-color: #EBEBEB;
+}
+
+.logo{
+    font-family: 'Lavishly Yours';
+    width: 12.625rem;
+    height: 2.75rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.links{
+    font-family: 'Lato';
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: black;
+}
+
+.button{
+    width: 8.875rem;
+    height: 3.25rem;
+    font-family: 'Inter';
+    background-color: #204969;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 4px 0 #00000059;
+}
+
+.verify-text{
+    font-family: 'Lato';
+    font-size: 4rem;
+    font-weight: bolder;
+    color: #000;
+}
+.head-text{
+    font-family: 'Lato';
+    font-size: 4rem;
+    font-weight: 350;
+    color: #000;
+}
+.head-container{
+    margin-left: 7rem;
+    margin-top: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.logo-image{
+    mix-blend-mode: multiply;
+}
+.exp-text{
+    font-family: 'Lato';
+    font-size: 1.5rem;
+    font-weight: 400;
+    width: 67.7vw;
+    height: 4.938rem;
+    margin-left: 19vw;
+    margin-top: 5rem;
+    letter-spacing: 0.09rem;
+}
+
+.footer{
+    height: 20.5rem;
+    background-color: #c9c9c9;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    bottom: 0;
+
+    .get{
+        font-family: 'Lexend';
+        width: 15.5rem;
+        height: 2.562rem;
+        font-weight: 500;
+        color: #000;
+        font-size: 2rem;
+        margin-top: 3rem;
+        margin-left: 14.25rem;
+    }
+    .know{
+        font-family: 'Jura';
+        font-size: 1rem;
+        margin-left: 8.5rem;
+        margin-top: 1rem;
+        color: #000;
+        font-weight: 450;
+    }
+    .input-custom{
+        width: 33.2rem;
+        height: 3.5rem;
+        border-radius: 1rem;
+        margin-left: 5.438rem;
+        margin-top: 1rem;
+    }
+    .custom-sign-button{
+        width: 6.313rem;
+        height: 2.688rem;
+        margin-left: 17.688rem;
+        background-color: #32C86E;
+        font-family: 'Lato';
+        color: #FFFFFF;
+        font-size: 1rem;
+    }
+    .list-container{
+        display: flex;
+        justify-content: space-evenly;
+        font-family: 'Inter';
+
+        .list-head{
+            font-weight: 500;
+            font-size: 2rem;
+        }
+
+        .list-content{
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+    }
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-sign{
+    position: relative;
+    font-family: 'Inter';
+    font-size: 1rem;
+    background-color: #F2F4F6;
+    width: 10.75rem;
+    height: 3.438rem;
+    padding: 0.65rem;
+    left: 13.125rem;
+    font-weight: 500;
+}
+.sign-box-wrap{
+    position: relative;
+    left: 13.125rem;
+    background-color: #F2F4F6;
+    width: 72.5rem;
+    height: 9.264rem;
+
+    .sign-box{
+        width: 17.25rem;
+        height: 5.133rem;
+        font-family: 'M PLUS 1';
+        border: 0.1rem solid #9E8585;
+        font-size: 1rem;
+        font-weight: 400;
+        background-color: #FFFFFF;
+        display: flex;
+        justify-content: center; /* Horizontal centering */
+        align-items: center;
+    }
+}
+.mid-wrapper{
+    position: relative;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    left: 13.125rem;
+}

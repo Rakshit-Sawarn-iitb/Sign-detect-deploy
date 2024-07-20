@@ -4,25 +4,24 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from PIL import Image
 import torchvision.transforms as transforms
-from siamese_network import SiameseNetwork
+from model import model
 
 # Initialize the Flask app
 app = Flask(__name__)
 CORS(app)
 
 # Load the trained model
-model_path = "modelka1469.pt"
-model = SiameseNetwork()
+model_path = "siamesemodel2 (1).pth"
 model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
 model.eval()
 
 transform = transforms.Compose([
-    transforms.Resize((220, 155)),
+    transforms.Resize((224, 224)),
     transforms.ToTensor(),
     transforms.Normalize((0.5,), (0.5,))
 ])
 
-def predict_signature(model, original_image_path, test_image_path, transform, device, threshold=0.0001):
+def predict_signature(model, original_image_path, test_image_path, transform, device, threshold=0.001):
     original_image = Image.open(original_image_path).convert("L")
     test_image = Image.open(test_image_path).convert("L")
 
@@ -35,10 +34,13 @@ def predict_signature(model, original_image_path, test_image_path, transform, de
 
     model.eval()
     with torch.no_grad():
-        output1, output2 = model(original_image, test_image)
-        euclidean_distance = torch.nn.functional.pairwise_distance(output1, output2)
+        features1 = model.forward_features(original_image)
+        features2 = model.forward_features(test_image)
+    
+    euclidean_distance = torch.nn.functional.pairwise_distance(features1, features2).mean().item()
+    print(euclidean_distance)
 
-    if euclidean_distance.item() < threshold:
+    if euclidean_distance < threshold:
         response = "Original"
     else:
         response = "Forged"
@@ -48,6 +50,10 @@ def predict_signature(model, original_image_path, test_image_path, transform, de
 @app.route('/')
 def home():
     return render_template('index.html')
+
+@app.route('/about.html')
+def about():
+    return render_template('about.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
