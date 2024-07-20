@@ -51,6 +51,10 @@ def predict_signature(model, original_image_path, test_image_path, transform, de
 def home():
     return render_template('index.html')
 
+@app.route('/about.html')
+def about():
+    return render_template('about.html')
+
 @app.route('/predict', methods=['POST'])
 def predict():
     if 'file1' not in request.files or 'file2' not in request.files:
