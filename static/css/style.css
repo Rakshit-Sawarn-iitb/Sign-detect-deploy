@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jura:wght@300..700&family=Lexend:wght@100..900&family=M+PLUS+1:wght@100..900&display=swap');
 
 body {
-    background: linear-gradient(to bottom, #ffeeee, #FFFFFF);
+    background: linear-gradient(to bottom, #ffeeee, #FFFFFF, #ffeeee);
     height: 100vh;
     margin: 0;
     overflow-x: hidden;
@@ -15,6 +15,7 @@ body {
 .custom-navbar{
     height: 7.25rem;
     background-color: #EBEBEB;
+    width: 100%;
 }
 
 .logo{
@@ -44,29 +45,34 @@ body {
     box-shadow: 0 4px 4px 0 #00000059;
 }
 
-.verify-text{
+.verify-text {
     font-family: 'Lato';
     font-size: 4rem;
     font-weight: bolder;
     color: #000;
 }
-.head-text{
+
+.head-text {
     font-family: 'Lato';
     font-size: 4rem;
     font-weight: 350;
     color: #000;
 }
-.head-container{
+
+.head-container {
     margin-left: 7rem;
     margin-top: 7rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
-.logo-image{
+
+.logo-image {
     mix-blend-mode: multiply;
 }
-.exp-text{
+
+.exp-text {
     font-family: 'Lato';
     font-size: 1.5rem;
     font-weight: 400;
@@ -77,66 +83,184 @@ body {
     letter-spacing: 0.09rem;
 }
 
-.footer{
-    height: 20.5rem;
-    background-color: #c9c9c9;
-    width: 100vw;
-    display: flex;
-    justify-content: space-around;
-    bottom: 0;
+@media (max-width: 768px) {
+    .verify-text, .head-text {
+        font-size: 2.5rem; /* Adjust font size for smaller screens */
+    }
 
-    .get{
-        font-family: 'Lexend';
-        width: 15.5rem;
-        height: 2.562rem;
-        font-weight: 500;
-        color: #000;
-        font-size: 2rem;
-        margin-top: 3rem;
-        margin-left: 14.25rem;
+    .head-container {
+        margin-left: 2rem; /* Adjust margin for smaller screens */
+        margin-top: 2rem; /* Adjust margin for smaller screens */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center align items */
+        text-align: center; /* Center align text */
     }
-    .know{
-        font-family: 'Jura';
-        font-size: 1rem;
-        margin-left: 8.5rem;
-        margin-top: 1rem;
-        color: #000;
-        font-weight: 450;
-    }
-    .input-custom{
-        width: 33.2rem;
-        height: 3.5rem;
-        border-radius: 1rem;
-        margin-left: 5.438rem;
-        margin-top: 1rem;
-    }
-    .custom-sign-button{
-        width: 6.313rem;
-        height: 2.688rem;
-        margin-left: 17.688rem;
-        background-color: #32C86E;
-        font-family: 'Lato';
-        color: #FFFFFF;
-        font-size: 1rem;
-    }
-    .list-container{
-        display: flex;
-        justify-content: space-evenly;
-        font-family: 'Inter';
 
-        .list-head{
-            font-weight: 500;
-            font-size: 2rem;
-        }
+    .logo-image {
+        width: 100%; /* Adjust logo size for smaller screens */
+        max-width: 300px; /* Maximum width for the logo */
+    }
 
-        .list-content{
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-top: 1rem;
-            cursor: pointer;
-        }
+    .exp-text {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+        width: 90vw; /* Full width on smaller screens */
+        margin-left: 1rem; /* Remove left margin */
+        margin-top: 2rem; /* Adjust top margin */
     }
 }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .verify-text, .head-text {
+        font-size: 3rem; /* Adjust font size for medium screens */
+    }
+
+    .head-container {
+        margin-left: 4rem; /* Adjust margin for medium screens */
+        margin-top: 4rem; /* Adjust margin for medium screens */
+        flex-direction: row; /* Keep items in a row */
+    }
+
+    .logo-image {
+        width: 100%; /* Adjust logo size for medium screens */
+        max-width: 500px; /* Maximum width for the logo */
+    }
+
+    .exp-text {
+        font-size: 1.3rem; /* Adjust font size for medium screens */
+        width: 80vw; /* Adjust width for medium screens */
+        margin-left: 5rem; /* Remove left margin */
+        margin-top: 3rem; /* Adjust top margin */
+    }
+}
+
+
+.footer {
+    height: auto; /* Adjust height to fit content */
+    background-color: #c9c9c9;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+    padding: 2rem; /* Add padding for better spacing */
+    box-sizing: border-box;
+  }
+  
+  .footer .d-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items */
+    margin-bottom: 2rem;
+    justify-content: space-around;
+  }
+  
+  .get {
+    font-family: 'Lexend';
+    font-weight: 500;
+    color: #000;
+    font-size: 1.5rem; /* Adjust font size for better readability */
+    text-align: center; /* Center text alignment */
+  }
+  
+  .know {
+    font-family: 'Jura';
+    font-size: 1rem;
+    color: #000;
+    font-weight: 450;
+    text-align: center; /* Center text alignment */
+    margin-bottom: 1rem;
+  }
+  
+  .input-group {
+    width: 100%;
+    max-width: 400px; /* Limit width for larger screens */
+    margin-bottom: 1rem;
+  }
+  
+  .input-custom {
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.5rem;
+  }
+  
+  .custom-sign-button {
+    width: 100%;
+    max-width: 150px; /* Limit width for larger screens */
+    height: 2.5rem;
+    background-color: #32C86E;
+    font-family: 'Lato';
+    color: #FFFFFF;
+    font-size: 1rem;
+  }
+  
+  .list-container {
+    display: flex;
+    flex-direction: column; /* Stack lists vertically on smaller screens */
+    align-items: center; /* Center align items */
+    font-family: 'Inter';
+  }
+  
+  .list-container ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .list-head {
+    font-weight: 500;
+    font-size: 1.5rem; /* Adjust font size for better readability */
+    margin-bottom: 0.5rem;
+  }
+  
+  .list-content {
+    font-size: 1rem; /* Adjust font size for better readability */
+    margin-top: 0.5rem;
+    cursor: pointer;
+    text-align: center; /* Center text alignment */
+  }
+  
+  @media (min-width: 768px) {
+    .footer {
+      flex-direction: row; /* Align items in a row for larger screens */
+      align-items: flex-start; /* Align items to the start */
+    }
+  
+    .d-flex {
+      align-items: flex-start; /* Align items to the start */
+      margin-bottom: 0;
+    }
+  
+    .get {
+      font-size: 2rem;
+      text-align: left;
+    }
+  
+    .know {
+      text-align: left;
+    }
+  
+    .input-group {
+      width: auto;
+    }
+  
+    .custom-sign-button {
+      width: auto;
+    }
+  
+    .list-container {
+      flex-direction: row; /* Align lists in a row for larger screens */
+    }
+  
+    .list-container ul {
+      margin-right: 2rem; /* Space between lists */
+    }
+  
+    .list-head {
+      font-size: 2rem;
+    }
+  
+    .list-content {
+      font-size: 1.5rem;
+    }
+  }
+  
 
 ul{
     list-style-type: none;
@@ -146,7 +270,7 @@ ul{
     justify-content: center;
 }
 
-.test-sign{
+.test-sign {
     position: relative;
     font-family: 'Inter';
     font-size: 1rem;
@@ -154,32 +278,145 @@ ul{
     width: 10.75rem;
     height: 3.438rem;
     padding: 0.65rem;
-    left: 13.125rem;
+    left: 13.5rem;
     font-weight: 500;
+    text-align: center; /* Center text alignment */
 }
-.sign-box-wrap{
-    position: relative;
-    left: 13.125rem;
-    background-color: #F2F4F6;
-    width: 72.5rem;
-    height: 9.264rem;
 
-    .sign-box{
-        width: 17.25rem;
-        height: 5.133rem;
-        font-family: 'M PLUS 1';
-        border: 0.1rem solid #9E8585;
-        font-size: 1rem;
-        font-weight: 400;
-        background-color: #FFFFFF;
-        display: flex;
-        justify-content: center; /* Horizontal centering */
-        align-items: center;
-    }
+.sign-box-wrap {
+    position: relative;
+    left: 13.5rem;
+    background-color: #F2F4F6;
+    width: 100%; /* Full width on smaller screens */
+    max-width: 72.5rem; /* Maximum width for larger screens */
+    height: fit-content; /* Adjust height to fit content */
+    display: flex;
+    gap: 1rem; /* Space between sign boxes */
+    padding: 1rem;
 }
-.mid-wrapper{
+
+.sign-box {
+    width: 100%; /* Full width on smaller screens */
+    max-width: 17.25rem; /* Maximum width for larger screens */
+    height: 10rem; /* Adjust height to fit content */
+    font-family: 'M PLUS 1';
+    border: 0.1rem solid #9E8585;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding: 1rem; /* Add padding */
+}
+
+.sign-box input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.sign-box img {
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+}
+
+.sign-box .placeholder {
+    position: absolute;
+    color: #aaa;
+}
+
+.mid-wrapper {
     position: relative;
     margin-top: 5rem;
     margin-bottom: 5rem;
-    left: 13.125rem;
+}
+
+@media (max-width: 768px) {
+    .test-sign {
+        height: fit-content;
+        width: 10.75rem; /* Full width on smaller screens */
+        font-size: 1.2rem; /* Adjust font size for better readability */
+        left: 30%; /* Remove left positioning */
+        text-align: center; /* Center text alignment */
+        top: 3rem;
+    }
+
+    .sign-box-wrap {
+        flex-direction: column; /* Stack sign boxes vertically */
+        gap: 1rem; /* Add spacing between sign boxes */
+        padding: 1rem; /* Add padding */
+        left: 5%; /* Remove left positioning */
+        top: 3rem;
+        width: 90%;
+    }
+
+    .sign-box {
+        width: 100%; /* Full width on smaller screens */
+        height: 10rem; /* Adjust height to fit content */
+        padding: 1rem; /* Add padding */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .test-sign {
+        font-size: 1.2rem; /* Adjust font size for medium screens */
+    }
+
+    .sign-box-wrap {
+        flex-direction: row; /* Align sign boxes horizontally */
+        gap: 1rem; /* Add spacing between sign boxes */
+    }
+
+    .sign-box {
+        width: 100%; /* Full width on medium screens */
+        max-width: 17.25rem; /* Maximum width for larger screens */
+    }
+}
+
+
+.pics-wrapper{
+    width: 75vw;
+    .profile-pics{
+        border-radius: 100%;
+        width: 16vw;
+        aspect-ratio: 1;
+    }
+
+    .pic-name{
+        font-family: 'Lato';
+        font-size: 2rem;
+        font-weight: 500;
+        color: #000;
+    }
+}
+
+.role{
+    font-family: 'Inter';
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.role-wrapper{
+    margin-top: 4rem;
+    width: 100vw;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+.green-dot{
+    height: 1rem;
+    width: 1rem;
+    border-radius: 100%;
+    background-color: #32C86E;
 }
