@@ -58,7 +58,7 @@
         <div class="input-group input-custom mb-3">
           <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Type your Email">
         </div>
-        <button type="button" class="btn custom-sign-button">Sign Up</button>
+        <button id="submitButton" type="button" class="btn custom-sign-button">Sign Up</button>
       </div>
       <div class="list-container">
         <ul class="mx-5">
@@ -131,6 +131,23 @@
       document.getElementById('result').innerText = 'An error occurred. Please try again.';
     });
   });
+  document.getElementById('submitButton').addEventListener('click', function() {
+  const email = document.getElementById('emailInput').value;
+  fetch('/submit_email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email: email }),
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message || data.error); // Show a message or error
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
     </script>
     <script src="/static/scripts/script.js"></script>
 </body>

@@ -9,11 +9,18 @@ from extract import box_extraction
 from fine_dataset import FineTuneDataset
 from torch.utils.data import DataLoader
 from fine_tune import fine_tune
+from pymongo import MongoClient
+
 
 # Initialize the Flask app
 app = Flask(__name__)
 CORS(app)
 
+
+mongodb_uri = 'mongodb://localhost:27017/'
+client = MongoClient(mongodb_uri)
+db = client['Emails']
+collection = db['user_emails']
 
 model_path = "siamesemodel2 (1).pth"
 model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
@@ -50,17 +57,40 @@ def predict():
     file1.save('temp1.png')
     file2.save('temp2.png')
 
+    print("Checking Started")
+
     signatures = box_extraction('temp1.png')
+
+    print("Boxes made")
 
     fine_dataset = FineTuneDataset(signatures = signatures, transform = transform)
 
+    print("Dataset Created")
+
+    print(len(fine_dataset))
+
     fine_dataloader = DataLoader(fine_dataset, shuffle = True, batch_size = 10, num_workers = 0)
 
+    print("Dataloader created")
+
     model_tuned = fine_tune(fine_dataloader= fine_dataloader, model = model, device=device)
+
+    print("Model Tuned")
     
-    is_genuine = predict_signature(model_tuned, 'temp1.png', 'temp2.png', transform, device)
+    is_genuine = predict_signature(model_tuned, signatures, 'temp2.png', transform, device)
+
+    print("Prediction done")
 
     os.remove('temp1.png')
     os.remove('temp2.png')
 
     return jsonify({'is_genuine': is_genuine})
+
+@app.route('/submit_email', methods=['POST'])
+def submit_email():
+    email = request.json.get('email')
+    if email:
+        # Insert the email into the MongoDB collection
+        collection.insert_one({'email': email})
+        return jsonify({'message': 'Email saved successfully!'}), 200
+    return jsonify({'error': 'No email provided'}), 400
