@@ -13,9 +13,12 @@ body {
 }
 
 .custom-navbar{
-    height: 7.25rem;
+    height: 5rem;
     background-color: #EBEBEB;
     width: 100%;
+    padding: 0.1rem;
+    display: flex;
+    align-items: center;
 }
 
 .logo{
@@ -36,12 +39,14 @@ body {
 
 .button{
     width: 8.875rem;
-    height: 3.25rem;
+    height: 2rem;
+    padding: 0.1rem;
+    text-align: center;
     font-family: 'Inter';
     background-color: #204969;
     color: #FFFFFF;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     box-shadow: 0 4px 4px 0 #00000059;
 }
 
@@ -135,12 +140,12 @@ body {
 
 
 .footer {
-    height: auto; /* Adjust height to fit content */
+    height: fit-content; /* Adjust height to fit content */
     background-color: #c9c9c9;
     width: 100%;
     display: flex;
     flex-direction: column; /* Stack elements vertically on smaller screens */
-    padding: 2rem; /* Add padding for better spacing */
+    padding: 1rem; /* Add padding for better spacing */
     box-sizing: border-box;
   }
   
@@ -156,7 +161,7 @@ body {
     font-family: 'Lexend';
     font-weight: 500;
     color: #000;
-    font-size: 1.5rem; /* Adjust font size for better readability */
+    font-size: 1rem; /* Adjust font size for better readability */
     text-align: center; /* Center text alignment */
   }
   
@@ -171,7 +176,7 @@ body {
   
   .input-group {
     width: 100%;
-    max-width: 400px; /* Limit width for larger screens */
+    max-width: 40rem; /* Limit width for larger screens */
     margin-bottom: 1rem;
   }
   
@@ -219,7 +224,8 @@ body {
   @media (min-width: 768px) {
     .footer {
       flex-direction: row; /* Align items in a row for larger screens */
-      align-items: flex-start; /* Align items to the start */
+      align-items: center; /* Align items to the start */
+      justify-content: space-around;
     }
   
     .d-flex {
@@ -228,7 +234,7 @@ body {
     }
   
     .get {
-      font-size: 2rem;
+      font-size: 1.5rem;
       text-align: left;
     }
   
@@ -253,11 +259,11 @@ body {
     }
   
     .list-head {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
   
     .list-content {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
   }
   
@@ -281,6 +287,7 @@ ul{
     left: 13.5rem;
     font-weight: 500;
     text-align: center; /* Center text alignment */
+    top: 3rem;
 }
 
 .sign-box-wrap {
@@ -288,11 +295,12 @@ ul{
     left: 13.5rem;
     background-color: #F2F4F6;
     width: 100%; /* Full width on smaller screens */
-    max-width: 72.5rem; /* Maximum width for larger screens */
+    max-width: 60rem; /* Maximum width for larger screens */
     height: fit-content; /* Adjust height to fit content */
     display: flex;
     gap: 1rem; /* Space between sign boxes */
     padding: 1rem;
+    top: 3rem;
 }
 
 .sign-box {
@@ -371,6 +379,7 @@ ul{
     .sign-box-wrap {
         flex-direction: row; /* Align sign boxes horizontally */
         gap: 1rem; /* Add spacing between sign boxes */
+        width: 70%;
     }
 
     .sign-box {
@@ -393,6 +402,7 @@ ul{
         font-size: 2rem;
         font-weight: 500;
         color: #000;
+        text-align: center;
     }
 }
 
@@ -419,4 +429,13 @@ a{
     width: 1rem;
     border-radius: 100%;
     background-color: #32C86E;
+}
+
+.meet{
+  margin-top: 4rem;
+  font-family: 'Inter';
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #201E2F;
 }
