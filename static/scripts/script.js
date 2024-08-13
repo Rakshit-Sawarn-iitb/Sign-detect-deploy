@@ -1,32 +1,71 @@
-var typed = new Typed(".auto-type", {
-    strings: ["Verify"],
-    typeSpeed: 200,
-    backSpeed: 250,
-    loop: true
-})
-
-document.getElementById('signatureForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const formData = new FormData();
-    formData.append('file1', document.getElementById('file1').files[0]);
-    formData.append('file2', document.getElementById('file2').files[0]);
-
-    fetch('/predict', {
-        method: 'POST',
-        body: formData
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/check-login-status', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include'
     })
     .then(response => response.json())
     .then(data => {
-        if (data.error) {
-            document.getElementById('result').textContent = `Error: ${data.error}`;
+        const loginButton = document.getElementById('login-button');
+        const logoutButton = document.getElementById('logout-button');
+
+        if (data.loggedIn) {
+            // User is logged in
+            loginButton.style.display = 'none'; // Hide login button
+            logoutButton.style.display = 'block'; // Show logout button
+            
+            logoutButton.addEventListener('click', async function() {
+                const response = await fetch('/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include'
+                });
+
+                const result = await response.json();
+                alert(result.message);
+
+                if (response.ok) {
+                    // Redirect to home page after successful logout
+                    window.location.href = '/';
+                }
+            });
         } else {
-            document.getElementById('result').textContent = `Result: ${data.is_genuine}`;
-            console.log(data.is_genuine);
+            // User is not logged in
+            loginButton.style.display = 'block'; // Show login button
+            logoutButton.style.display = 'none'; // Hide logout button
         }
     })
     .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('result').textContent = `Error: ${error}`;
+        console.error('Fetch error:', error);
+        // Handle fetch error
+        const loginButton = document.getElementById('login-button');
+        const logoutButton = document.getElementById('logout-button');
+        loginButton.style.display = 'none'; // Hide login button on error
+        logoutButton.style.display = 'none'; // Hide logout button on error
     });
+});
+
+
+document.getElementById('signatureForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+
+    try {
+        const response = await fetch('/compare', {
+            method: 'POST',
+            body: formData,
+            credentials: 'include' // Include cookies (if using session-based authentication)
+        });
+
+        const result = await response.json();
+        alert(result.is_genuine || result.error);
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while verifying the signature.');
+    }
 });

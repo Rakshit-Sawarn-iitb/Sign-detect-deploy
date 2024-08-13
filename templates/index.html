@@ -23,7 +23,8 @@
                     <li class="nav-item"><a class="nav-link links mx-4" href="#">Contact Us</a></li>
                 </ul>
             </div>
-            <button type="button" class="btn button rounded-pill ms-lg-3">Verify</button>
+            <a href="login_page"><button id="login-button" type="button" class="btn button rounded-pill ms-lg-3">Login</button></a>
+            <button id="logout-button" type="button" class="btn button rounded-pill ms-lg-3">Logout</button>
         </div>
     </nav>
     <div class="head-container">
@@ -38,14 +39,9 @@
       <div class="test-sign">Test Your Signature</div>
       <form id="signatureForm" enctype="multipart/form-data" class="sign-box-wrap d-flex align-items-center justify-content-around">
         <div class="sign-box" id="box1">
-          <span class="placeholder">Upload Your Original Signature</span>
-          <input type="file" id="file1" name="file1" class="form-control" required onchange="previewImage(event, 'preview1')">
+          <span class="placeholder">Upload Your Signature To Be Tested</span>
+          <input type="file" id="file0" name="file0" class="form-control" required onchange="previewImage(event, 'preview1')">
           <img id="preview1" src="#">
-        </div>
-        <div class="sign-box" id="box2">
-          <span class="placeholder">Upload Your Test Signature</span>
-          <input type="file" id="file2" name="file2" class="form-control" required onchange="previewImage(event, 'preview2')">
-          <img id="preview2" src="#">
         </div>
         <button type="submit" class="btn button rounded-pill ms-lg-3">Verify</button>
       </form>
@@ -101,36 +97,6 @@
           }
           reader.readAsDataURL(file);
       }
-
-      document.querySelectorAll('.sign-box').forEach(box => {
-          box.addEventListener('click', function() {
-              const fileInput = this.querySelector('input[type="file"]');
-              fileInput.click();
-          });
-      });
-
-      document.getElementById('signatureForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    const formData = new FormData(this);
-
-    fetch('/predict', {
-      method: 'POST',
-      body: formData,
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        document.getElementById('result').innerText = data.error;
-      } else {
-        document.getElementById('result').innerText = data.is_genuine;
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      document.getElementById('result').innerText = 'An error occurred. Please try again.';
-    });
-  });
     </script>
     <script src="/static/scripts/script.js"></script>
 </body>

@@ -16,7 +16,3 @@ model.conv1 = nn.Conv2d(
 
 with torch.no_grad():
     model.conv1.weight[:, 0, :, :] = original_conv.weight.mean(dim=1)
-
-in_features = model.fc.in_features
-
-model.fc = nn.Linear(in_features, 2)

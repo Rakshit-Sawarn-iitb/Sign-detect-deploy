@@ -23,7 +23,8 @@
                     <a class="nav-link links mx-4" href="#">FAQ</a>
                     <a class="nav-link links mx-4" href="#">Contact Us</a>
                 </div>
-                <button type="button" class="btn button rounded-pill ms-lg-3">Verify</button>
+                <a href="login_page"><button id="login-button" type="button" class="btn button rounded-pill ms-lg-3">Login</button></a>
+            <button id="logout-button" type="button" class="btn button rounded-pill ms-lg-3">Logout</button>
             </div>
         </div>
     </nav>
@@ -34,10 +35,15 @@
         </div>
         <span><img class="logo-image" src="/static/images/image 1.png" alt=""></span>
     </div>
-    <div class="d-flex flex-column align-items-center justify-content-center role-wrapper">
-        <div class="d-flex justify-content-evenly align-items-center" data-aos="fade-up" data-aos-duration="500">
-            <div class="d-flex flex-column align-items-center justify-content-center pics-wrapper"><img class="profile-pics" src="/static/images/rakshit.jpg" alt=""><span class="pic-name">Rakshit Sawarn</span></div>
-            <div class="d-flex flex-column align-items-center justify-content-center pics-wrapper"><img class="profile-pics" src="/static/images/sahil.png" alt=""><span class="pic-name">Sahil Kukreja</span></div>
+    <div class="meet">
+      Meet the Team!
+    </div>
+    <div class="d-flex flex-column role-wrapper col-xl-12 w-100">
+        <div class="d-flex align-items-center flex-column col-xl-12 w-100">
+            <div class="d-flex flex-column align-items-start justify-content-center pics-wrapper mx-2 my-3" data-aos="fade-up" data-aos-duration="500"><img class="profile-pics" src="/static/images/rakshit.jpg" alt=""><span class="pic-name">Rakshit Sawarn</span></div>
+            <div class="d-flex flex-column align-items-end justify-content-center pics-wrapper mx-2 my-3" data-aos="fade-up" data-aos-duration="500"><img class="profile-pics" src="/static/images/sahil.png" alt=""><span class="pic-name">Sahil Kukreja</span></div>
+            <div class="d-flex flex-column align-items-start justify-content-center pics-wrapper mx-2 my-3" data-aos="fade-up" data-aos-duration="500"><img class="profile-pics" src="/static/images/Tushar Bajaj-2.JPG" alt=""><span class="pic-name">Tushar Bajaj</span></div>
+            <div class="d-flex flex-column align-items-end justify-content-center pics-wrapper mx-2 my-3" data-aos="fade-up" data-aos-duration="500"><img class="profile-pics" src="/static/images/WhatsApp Image 2024-08-05 at 19.30.36_34e1c5a4.jpg" alt=""><span class="pic-name">Dhriti Singh</span></div>
         </div>
     </div>
     <footer class="footer">
@@ -74,5 +80,6 @@
         <script>
         AOS.init();
         </script>
+        <script src="/static/scripts/script.js"></script>
 </body>
 </html>
